@@ -1,17 +1,9 @@
 import React from 'react';
+import Comment from 'Comment';
 
 function CommentSection(props) {
     return (
-        props.comments.map(comment => {
-            return <div className="comment">
-                <p>
-                    <span>
-                        {comment.username}
-                    </span>
-                    {comment.text}
-                </p>
-            </div>
-        })
+        props.comments.map(comment => <Comment comment={comment} />)
     );
     
 }
