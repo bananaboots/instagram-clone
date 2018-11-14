@@ -1,12 +1,36 @@
-import React, {Fragment} from 'react';
+import React, {Component, Fragment} from 'react';
 import Post from './Post';
+// import PropTypes from 'prop-types';
 
-function PostContainer(props) {
-    return (
-        <Fragment>
-        {props.posts.map(postElement => <Post post={postElement} />)}
-        </Fragment>
-    );
+
+class PostContainer extends Component {
+    constructor(props) {
+        console.log('constructed')
+        super(props);
+        this.state = {
+            posts: props.posts
+        }
+        // this.propTypes = {
+        //     posts: PropTypes.arrayOf(PropTypes.object)
+        // }
+    }
+
+    // componentDidMount() {
+    //     console.log('component did mount!?!')
+    //     return this.setState({
+    //         posts: this.props.posts
+    //     })
+    // }
+
+    render() {
+        console.log('rendering!')
+        return (
+            <Fragment>
+                {this.state.posts.map((postElement) => <Post post={postElement} />)}
+            </Fragment>
+        );
+    }
+    
 }
 
 export default PostContainer;

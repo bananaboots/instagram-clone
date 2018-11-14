@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import PropTypes from 'prop-types';
 import dummyData from './utilities/dummy_data';
 import PostContainer from './components/PostContainer/PostContainer';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      posts: []
+    }
+  }
+
+  componentDidMount(){
+    this.setState({
+      posts: dummyData
+    })
+  }
 
   render() {
     return (
       <div className="App">
-        <PostContainer posts={dummyData} />
+        <PostContainer posts={this.state.posts} />
       </div>
     );
   }
