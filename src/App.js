@@ -2,25 +2,29 @@ import React, { Component } from 'react';
 import './App.css';
 import dummyData from './utilities/dummy_data';
 import PostContainer from './components/PostContainer/PostContainer';
+import SearchBar from './components/SearchBar/SearchBar';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      posts: []
+      posts: dummyData,
+      searchQuery: ''
     }
   }
 
-  componentDidMount(){
+  onSearch(searchQuery) {
     this.setState({
-      posts: dummyData
+      ...this.state,
+      searchQuery
     })
   }
 
   render() {
     return (
       <div className="App">
-        <PostContainer posts={this.state.posts} />
+        <SearchBar onSearch={(searchQuery) => this.onSearch(searchQuery)} />
+        <PostContainer searchQuery={this.state.searchQuery} posts={this.state.posts} />
       </div>
     );
   }

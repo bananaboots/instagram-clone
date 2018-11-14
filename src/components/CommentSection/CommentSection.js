@@ -9,10 +9,7 @@ class CommentSection extends Component {
         this.state = {
             comments: []
 
-        }
-        this.propTypes = {
-            comments: PropTypes.arrayOf(PropTypes.object)
-        }
+        }        
     }
 
     componentDidMount() {
@@ -45,7 +42,7 @@ class CommentSection extends Component {
     render() {
         return (
             <Fragment>
-                {this.state.comments.map(comment => <Comment comment={comment} />)}
+                {this.state.comments.map((comment, index) => <Comment comment={comment} key={index} />)}
                 <p className="timestamp">
                     {(moment(this.props.timestamp, "MMMM Do YYYY, h:mm:ss a").fromNow()).toUpperCase()}
                 </p>
@@ -58,5 +55,11 @@ class CommentSection extends Component {
     
     
 }
+
+
+CommentSection.propTypes = {
+    comments: PropTypes.arrayOf(PropTypes.object)
+}
+
 
 export default CommentSection;

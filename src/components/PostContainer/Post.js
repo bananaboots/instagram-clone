@@ -9,23 +9,14 @@ class Post extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            likes: 0
+            likes: 0,
         }
-        this.propTypes = {
-            post: PropTypes.shape({
-                username: PropTypes.string,
-                thumbnailURL: PropTypes.string,
-                imageURL: PropTypes.string,
-                likes: PropTypes.number,
-                timestamp: PropTypes.string,
-                comments: PropTypes.arrayOf(PropTypes.object),
-            })
-        }
+        
     }
 
     componentDidMount() {
         this.setState({
-            likes: this.props.post.likes
+            likes: this.props.post.likes,
         })
     }
 
@@ -66,6 +57,17 @@ class Post extends Component {
             </div>
         );
     }
+}
+
+Post.propTypes = {
+    post: PropTypes.shape({
+        username: PropTypes.string,
+        thumbnailURL: PropTypes.string,
+        imageURL: PropTypes.string,
+        likes: PropTypes.number,
+        timestamp: PropTypes.string,
+        comments: PropTypes.arrayOf(PropTypes.object),
+    })
 }
 
 export default Post;
